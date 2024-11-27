@@ -53,7 +53,7 @@ const Comments = ({
                           <div className="hidden xl:block">
                             <p className="flex gap-1 items-center text-md font-bold text-primary lowercase">
                               {user?.username?.replace(" ", "")}
-                              <GoVerified className="text-blue-400" />
+                              <GoVerified className="text-[#00BFFF]" />
                             </p>
                             <p className="capitalize text-gray-400 text-sm">
                               {user.username}
