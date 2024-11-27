@@ -1,3 +1,4 @@
+import useAuthStore from "@/store/authStore";
 import { BASE_URL } from "@/utils";
 import { client } from "@/utils/client";
 import { SanityAssetDocument } from "@sanity/client";
@@ -14,6 +15,7 @@ const EditProfileModal = ({
 }: IProps) => {
   const router = useRouter();
   const { id } = router.query;
+  const{addUser} = useAuthStore();
   const [username, setUsername] = useState("");
   const [uploading,setUploading] = useState(false);
   const [imageAsset, setImageAsset] = useState<SanityAssetDocument | undefined>();
@@ -34,16 +36,11 @@ const EditProfileModal = ({
   };
   const handleSave = async () => {
     if (username && imageAsset?._id) {
-      await axios.put(`${BASE_URL}/api/profile/${id}`, {
+      const response = await axios.put(`${BASE_URL}/api/profile/${id}`, {
         username,
-        image: {
-          _type:'file',
-          asset:{
-            _type:"reference",
-            _ref:imageAsset._id
-          }
-        }
+        image:imageAsset.url
       });
+      addUser(response.data);
       setShowEditProfileModal(false);
     }
   };
@@ -73,7 +70,7 @@ const EditProfileModal = ({
         </div>
         <div className="mb-4">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2 "
+            className="block text-gray-700 text-sm font-semibold mb-2 "
             htmlFor="file"
           >
             Profile Picture
@@ -95,7 +92,7 @@ const EditProfileModal = ({
           </button>
           <button
             onClick={handleSave}
-            className="px-4 py-2 text-white bg-[#f85eb6] rounded-lg hover:bg-[#F51997]"
+            className="px-4 py-2 text-white bg-[#43d2ec] rounded-lg hover:bg-[#0097b2]"
           >
             Save
           </button>
