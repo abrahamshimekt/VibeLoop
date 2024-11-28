@@ -44,7 +44,7 @@ const Profile = ({ data }: IProps) => {
             src={user.image}
             alt="user-profile"
           />
-          {userProfile && (
+          {userProfile && user.username === userProfile?.username &&(
             <AiOutlineEdit size={25} onClick={() => setshowEditProfileModal(true)} className=" text-[#0097b2] cursor-pointer" />
           )}
         </div>
