@@ -105,7 +105,7 @@ export const getServerSideProps = async ({
       props: { videos: res.data },
     };
   } catch (error) {
-    console.log("error:",error);
+    console.log(error);
     return { props: { videos: [] } };
   }
 };
