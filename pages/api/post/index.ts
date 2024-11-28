@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { client } from "@/utils/client";
 import { allPostsQuery } from "@/utils/queries";
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -21,6 +20,7 @@ export default async function handler(
       const document = req.body;
       client.create(document).then(() => res.status(201).json("video created"));
     } catch (error) {
+      console.log(error);
       res.status(500).json({ message: "Internal server error" });
     }
   }

@@ -103,6 +103,7 @@ export const getServerSideProps = async ({
       props: { data: res.data },
     };
   } catch (error) {
+    console.log(error);
     return {
       props: { data: null },
     };

@@ -11,7 +11,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
-    const { id }: any = req.query;
+    const { id } = req.query;
     const query = singleUserQuery(id);
     const userVideosQuery = userCreatedPostsQuery(id);
     const userLikedVidoesQuery = userLikedPostsQuery(id);
@@ -20,7 +20,7 @@ export default async function handler(
     const userLikedVideos = await client.fetch(userLikedVidoesQuery);
     res.status(200).json({user:user[0], userVideos, userLikedVideos });
   } else if (req.method === "PUT") {
-    const { id }: any = req.query;
+    const { id } = req.query;
     const { username, image } = req.body;
     const user = await client
       .patch(id)

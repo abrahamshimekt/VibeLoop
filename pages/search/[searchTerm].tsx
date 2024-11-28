@@ -16,7 +16,7 @@ const Search = ({ videos }: { videos: Video[] }) => {
   const [isAccounts, setIsAccounts] = useState(false);
   const router = useRouter();
   const { allUsers } = useAuthStore();
-  const { searchTerm }: any = router.query;
+  const { searchTerm } = router.query;
   const accounts = isAccounts ? "border-b-2 border-black" : "text-gray-400";
   const isVideos = !isAccounts ? "border-bp-2 border-black" : "text-gray-400";
   const searchedAccounts = allUsers.filter((user: IUser) =>
@@ -105,6 +105,7 @@ export const getServerSideProps = async ({
       props: { videos: res.data },
     };
   } catch (error) {
+    console.log(error);
     return { props: { videos: [] } };
   }
 };

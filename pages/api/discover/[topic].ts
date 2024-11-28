@@ -7,7 +7,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
-    const { topic }: any = req.query;
+    const { topic } = req.query;
     const videosQuery = topicPostsQuery(topic);
     const vidoes = await client.fetch(videosQuery);
     res.status(200).json(vidoes);

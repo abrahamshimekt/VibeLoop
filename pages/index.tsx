@@ -33,6 +33,7 @@ export const getServerSideProps = async ({
     }
     return { props: { videos: response?.data } };
   } catch (error) {
+    console.log(error);
     return { props: { videos: [] } };
   }
 };

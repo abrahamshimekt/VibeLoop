@@ -21,7 +21,7 @@ const Detail = ({ postDetails }: IProps) => {
   const [isVideoMuted, setIsVideoMuted] = useState(false);
   const vidoeRef = useRef<HTMLVideoElement>(null);
   const router = useRouter();
-  const { userProfile }: any = useAuthStore();
+  const { userProfile } = useAuthStore();
   const [comment, setComment] = useState("");
   const [isPostingComment, setIsPostingComment] = useState(false);
   const onVideoClick = () => {
@@ -170,6 +170,7 @@ export const getServerSideProps = async ({
       props: { postDetails: data },
     };
   } catch (error) {
+    console.log(error);
     return { props: { postDetails: null } };
   }
 };

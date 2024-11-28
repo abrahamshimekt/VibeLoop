@@ -17,8 +17,8 @@ const Upload = () => {
   const [caption, setCaption] = useState("");
   const [category, setCategory] = useState(topics[0].name);
   const [savingPost, setSavingPost] = useState(false);
-  const { userProfile }: { userProfile: any } = useAuthStore();
-  const uploadVideo = async (e: any) => {
+  const { userProfile } = useAuthStore();
+  const uploadVideo = async (e) => {
     const selectedFile = e.target.files[0];
     const fileTypes = ["video/mp4", "video/webm", "video/ogg"];
     if (fileTypes.includes(selectedFile.type)) {
@@ -158,6 +158,7 @@ const Upload = () => {
             <button
               type="button"
               onClick={handlePost}
+              disabled={savingPost}
               className="bg-[#0097b2] text-white text-md font-medium p-2 rounded w-28 lg:w-44 outline-none"
             >
               Post
