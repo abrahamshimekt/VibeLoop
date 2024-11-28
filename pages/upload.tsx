@@ -167,7 +167,7 @@ const Upload = () => {
               disabled={savingPost}
               className="bg-[#0097b2] text-white text-md font-medium p-2 rounded w-28 lg:w-44 outline-none"
             >
-              Post
+              {savingPost ? 'Posting...' : 'Post'}
             </button>
           </div>
         </div>
