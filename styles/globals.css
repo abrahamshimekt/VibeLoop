@@ -16,10 +16,9 @@ a {
 
 * {
   box-sizing: border-box;
-
 }
 
-.vidoes::-webkit-scrollbar {
+.videos::-webkit-scrollbar {
   width: 0px;
 }
 
